@@ -175,7 +175,7 @@ class AudioBook:
         while reading:
             if start_page > pages or start_page < 0:
                 speak_text(self.engine, "Invalid page number!")
-                speak_text(self.engine, f"The {type} has total {str(pages)} pages!")
+                speak_text(self.engine, f"The book has total {str(pages)} pages!")
                 start_page = int(input("Please enter the page number: "))
 
             speak_text(self.engine, f"Reading page {str(start_page+1)}")
@@ -195,13 +195,14 @@ class AudioBook:
                 start_page += 1
                 continue
             elif user_input == "q":
-                speak_text(self.engine, f"Quitting the {type}!")
+                speak_text(self.engine, "Quitting the book!")
                 break
             elif user_input.isnumeric():
                 start_page = int(user_input) - 1
             else:
                 user_input = input("Please Select an option: \n 1. Type 'r' to read again: \n 2. Type 'p' to read previous page\n 3. Type 'n' to read next page\n 4. Type 'q' to quit:\n 5. Type page number to read that page:\n")
                 continue
+
 
     def save_json_to_audio(self, json, audio_name):
         """ save json to a list of file in a folder having audio_name, one for each page """
